@@ -6,9 +6,20 @@ interface Role {
   current?: boolean;
 }
 
+interface Education {
+  degree: string;
+  yearGraduated?: string;
+  location?: string;
+}
+
 interface Company {
   name: string;
   roles: Role[];
+}
+
+interface Institution {
+  name: string;
+  education: Education[];
 }
 
 // Experience data
@@ -48,6 +59,32 @@ export const experienceData: Company[] = [
         title: 'Front End Developer',
         startDate: 'October 2020',
         endDate: 'December 2021',
+      },
+    ],
+  },
+];
+
+export const educationData: Institution[] = [
+  {
+    name: 'University of Texas at Austin',
+    education: [
+      {
+        degree: 'Bachelor of Science and Arts in Biology, Pre-health',
+        yearGraduated: '2020',
+        location: 'Austin, TX',
+      },
+      {
+        degree: 'Full-stack web development certificate',
+      },
+    ],
+  },
+  {
+    name: 'University of Oklahoma',
+    education: [
+      {
+        degree: 'Bachelor of Business Administration in Marketing',
+        yearGraduated: '2016',
+        location: 'Norman, OK',
       },
     ],
   },

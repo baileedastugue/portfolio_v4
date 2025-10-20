@@ -7,16 +7,28 @@ interface Role {
   current?: boolean;
 }
 
+interface Education {
+  degree: string;
+  yearGraduated?: string;
+  location?: string;
+}
+
 interface Company {
   name: string;
   roles: Role[];
 }
 
-interface Props {
-  companies: Company[];
+interface Institution {
+  name: string;
+  education: Education[];
 }
 
-const { companies } = Astro.props;
+interface Props {
+  companies: Company[];
+  institutions?: Institution[];
+}
+
+const { companies, institutions = [] } = Astro.props;
 ---
 
 <section id='experience'>
@@ -36,5 +48,28 @@ const { companies } = Astro.props;
         ))}
       </div>
     ))
+  }
+
+  {
+    institutions.length > 0 && (
+      <>
+        <h3>Education</h3>
+        {institutions.map((institution) => (
+          <>
+            <h4>{institution.name}</h4>
+            {institution.education.map((edu) => (
+              <>
+                <p>{edu.degree}</p>
+                <span>
+                  {edu.yearGraduated && edu.location
+                    ? `${edu.yearGraduated} - ${edu.location}`
+                    : edu.yearGraduated || edu.location}
+                </span>
+              </>
+            ))}
+          </>
+        ))}
+      </>
+    )
   }
 </section>
