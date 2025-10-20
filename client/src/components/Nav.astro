@@ -1,12 +1,48 @@
 <nav>
   <ul>
-    <li><a href='/#experience'>Experience</a></li>
-    <li><a href='/#projects'>Projects</a></li>
-    <li><a href='/#contact'>Contact</a></li>
+    <li>
+      <a href='#experience'>Experience</a>
+    </li>
+    <li>
+      <a href='#projects'>Projects</a>
+    </li>
     <li>
       <a href='https://www.linkedin.com/in/bailee-dastugue/' target='_blank'
         >LinkedIn</a
       >
     </li>
+    <li>
+      <button id='email-button' title='bailee.dast@gmail.com'> 📧 </button>
+    </li>
   </ul>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const emailButton = document.getElementById('email-button');
+    if (emailButton) {
+      emailButton.addEventListener('click', function () {
+        const email = 'bailee.dast@gmail.com';
+        navigator.clipboard
+          .writeText(email)
+          .then(() => {
+            // Show a brief confirmation
+            const button = this;
+            const originalText = button.textContent;
+            button.textContent = 'Copied! ✓';
+            button.style.color = '#10b981';
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.color = '';
+            }, 1000);
+          })
+          .catch((err) => {
+            console.error('Failed to copy email: ', err);
+            // Fallback: show email in alert
+            alert(email);
+          });
+      });
+    }
+  });
+</script>
