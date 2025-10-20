@@ -1,4 +1,6 @@
 ---
+import Section from '../layouts/Section.astro';
+
 interface Role {
   title: string;
   startDate: string;
@@ -31,45 +33,47 @@ interface Props {
 const { companies, institutions = [] } = Astro.props;
 ---
 
-<section id='experience'>
-  <h2>Experience</h2>
-  {
-    companies.map((company) => (
-      <div>
-        <h3>{company.name}</h3>
-        {company.roles.map((role) => (
-          <>
-            <h4>{role.title}</h4>
-            <span>
-              {role.startDate} - {role.current ? 'Present' : role.endDate}
-            </span>
-            {role.description && <p>{role.description}</p>}
-          </>
-        ))}
-      </div>
-    ))
-  }
+<Section id='experience'>
+  <h2 slot='title'>Experience</h2>
+  <div slot='body'>
+    {
+      companies.map((company) => (
+        <div>
+          <h3>{company.name}</h3>
+          {company.roles.map((role) => (
+            <>
+              <h4>{role.title}</h4>
+              <span>
+                {role.startDate} - {role.current ? 'Present' : role.endDate}
+              </span>
+              {role.description && <p>{role.description}</p>}
+            </>
+          ))}
+        </div>
+      ))
+    }
 
-  {
-    institutions.length > 0 && (
-      <>
-        <h3>Education</h3>
-        {institutions.map((institution) => (
-          <>
-            <h4>{institution.name}</h4>
-            {institution.education.map((edu) => (
-              <>
-                <p>{edu.degree}</p>
-                <span>
-                  {edu.yearGraduated && edu.location
-                    ? `${edu.yearGraduated} - ${edu.location}`
-                    : edu.yearGraduated || edu.location}
-                </span>
-              </>
-            ))}
-          </>
-        ))}
-      </>
-    )
-  }
-</section>
+    {
+      institutions.length > 0 && (
+        <>
+          <h3>Education</h3>
+          {institutions.map((institution) => (
+            <>
+              <h4>{institution.name}</h4>
+              {institution.education.map((edu) => (
+                <>
+                  <p>{edu.degree}</p>
+                  <span>
+                    {edu.yearGraduated && edu.location
+                      ? `${edu.yearGraduated} - ${edu.location}`
+                      : edu.yearGraduated || edu.location}
+                  </span>
+                </>
+              ))}
+            </>
+          ))}
+        </>
+      )
+    }
+  </div>
+</Section>

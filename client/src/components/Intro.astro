@@ -1,7 +1,11 @@
-<main>
-  <h1>Hi!</h1>
-  <p>
+---
+import Section from '../layouts/Section.astro';
+---
+
+<Section id='intro'>
+  <h1 slot='title'>Hi!</h1>
+  <p slot='body'>
     I'm Bailee Dastugue —<br /> a technical product manager with 5+ years shipping
     production-level code and driving product strategy in parallel.
   </p>
-</main>
+</Section>

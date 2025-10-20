@@ -8,7 +8,17 @@
     <title>Bailee Dastugue</title>
     <link rel='stylesheet' href='/src/styles/reset.css' />
   </head>
-  <body>
+  <body class='layout'>
     <slot />
   </body>
 </html>
+
+<style>
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+</style>
