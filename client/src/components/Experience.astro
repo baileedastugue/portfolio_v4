@@ -1,0 +1,40 @@
+---
+interface Role {
+  title: string;
+  startDate: string;
+  endDate?: string;
+  description?: string;
+  current?: boolean;
+}
+
+interface Company {
+  name: string;
+  roles: Role[];
+}
+
+interface Props {
+  companies: Company[];
+}
+
+const { companies } = Astro.props;
+---
+
+<section id='experience'>
+  <h2>Experience</h2>
+  {
+    companies.map((company) => (
+      <div>
+        <h3>{company.name}</h3>
+        {company.roles.map((role) => (
+          <>
+            <h4>{role.title}</h4>
+            <span>
+              {role.startDate} - {role.current ? 'Present' : role.endDate}
+            </span>
+            {role.description && <p>{role.description}</p>}
+          </>
+        ))}
+      </div>
+    ))
+  }
+</section>

@@ -1,9 +1,13 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Intro from '../components/Intro.astro';
+import Nav from '../components/Nav.astro';
+import Experience from '../components/Experience.astro';
 import Layout from '../layouts/Layout.astro';
-
+import { experienceData } from '../data/experience';
 ---
 
 <Layout>
-	<Welcome />
+  <Intro />
+  <Nav />
+  <Experience companies={experienceData} />
 </Layout>
