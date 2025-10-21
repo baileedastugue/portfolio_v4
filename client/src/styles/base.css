@@ -45,6 +45,18 @@ h6 {
   font-size: 0.5rem;
 }
 
+a {
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2d31fa;
+}
+
 @media (min-width: 375px) {
   html {
     font-size: 14px;
