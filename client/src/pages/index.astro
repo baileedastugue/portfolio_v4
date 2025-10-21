@@ -2,15 +2,18 @@
 import Intro from '../components/Intro.astro';
 import Nav from '../components/Nav.astro';
 import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
 import Layout from '../layouts/Layout.astro';
-import { experienceData, educationData } from '../data/experience';
+import { experienceData } from '../data/experience';
+import { educationData } from '../data/education';
 import { projectsData } from '../data/projects';
 ---
 
 <Layout>
   <Intro />
   <Nav />
-  <Experience companies={experienceData} institutions={educationData} />
+  <Experience companies={experienceData} />
+  <Education institutions={educationData} />
   <Projects projects={projectsData} />
 </Layout>

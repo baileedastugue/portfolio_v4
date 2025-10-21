@@ -1,79 +1,41 @@
 ---
 import Section from '../layouts/Section.astro';
-
-interface Role {
-  title: string;
-  startDate: string;
-  endDate?: string;
-  description?: string;
-  current?: boolean;
-}
-
-interface Education {
-  degree: string;
-  yearGraduated?: string;
-  location?: string;
-}
-
-interface Company {
-  name: string;
-  roles: Role[];
-}
-
-interface Institution {
-  name: string;
-  education: Education[];
-}
+import type { Company } from '../types';
+import '../styles/experience.css';
 
 interface Props {
   companies: Company[];
-  institutions?: Institution[];
 }
 
-const { companies, institutions = [] } = Astro.props;
+const { companies = [] } = Astro.props;
 ---
 
 <Section id='experience'>
   <h2 slot='title'>Experience</h2>
-  <div slot='body'>
-    {
-      companies.map((company) => (
-        <div>
-          <h3>{company.name}</h3>
-          {company.roles.map((role) => (
-            <>
-              <h4>{role.title}</h4>
-              <span>
-                {role.startDate} - {role.current ? 'Present' : role.endDate}
-              </span>
-              {role.description && <p>{role.description}</p>}
-            </>
-          ))}
-        </div>
-      ))
-    }
-
-    {
-      institutions.length > 0 && (
-        <>
-          <h3>Education</h3>
-          {institutions.map((institution) => (
-            <>
-              <h4>{institution.name}</h4>
-              {institution.education.map((edu) => (
-                <>
-                  <p>{edu.degree}</p>
-                  <span>
-                    {edu.yearGraduated && edu.location
-                      ? `${edu.yearGraduated} - ${edu.location}`
-                      : edu.yearGraduated || edu.location}
+  <div slot='body' class='experience'>
+    <div class='section'>
+      {
+        companies.map((company) => (
+          <div>
+            <h3>{company.name}</h3>
+            <div class='items'>
+              {company.roles.map((role) => (
+                <div>
+                  <span class='header'>
+                    <h4 class='title'>{role.title}</h4>
+                    <span class='dates'>
+                      {role.startDate} -{' '}
+                      {role.current ? 'Present' : role.endDate}
+                    </span>
                   </span>
-                </>
+                  {role.tagline && <p class='tagline'>{role.tagline}</p>}
+                  {role.description && <p>{role.description}</p>}
+                </div>
               ))}
-            </>
-          ))}
-        </>
-      )
-    }
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </Section>

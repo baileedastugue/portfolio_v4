@@ -1,54 +1,35 @@
-interface Role {
-  title: string;
-  startDate: string;
-  endDate?: string;
-  description?: string;
-  current?: boolean;
-}
+import type { Company } from '../types';
 
-interface Education {
-  degree: string;
-  yearGraduated?: string;
-  location?: string;
-}
-
-interface Company {
-  name: string;
-  roles: Role[];
-}
-
-interface Institution {
-  name: string;
-  education: Education[];
-}
-
-// Experience data
 export const experienceData: Company[] = [
   {
     name: 'H-E-B',
     roles: [
       {
         title: 'Product Manager',
-        startDate: 'February 2025',
+        startDate: 'Feb 2025',
         current: true,
+        tagline: 'Product lead for utilities and sustainability domains',
       },
       {
-        title: 'Senior Software Engineer, hybrid role in product management',
+        title: 'Senior Software Engineer',
         startDate: 'July 2024',
-        endDate: 'January 2025',
+        endDate: 'Jan 2025',
         current: false,
+        tagline: 'Hybrid role in product management',
       },
       {
-        title: 'Software Engineer II, hybrid role in product management',
-        startDate: 'April 2023',
-        endDate: 'June 2024',
+        title: 'Software Engineer II',
+        startDate: 'Apr 2023',
+        endDate: 'Jun 2024',
         current: false,
+        tagline: 'Hybrid role in product management',
       },
       {
         title: 'Software Engineer I',
-        startDate: 'January 2022',
-        endDate: 'March 2023',
+        startDate: 'Jan 2022',
+        endDate: 'Mar 2023',
         current: false,
+        tagline: 'TKTK',
       },
     ],
   },
@@ -57,34 +38,9 @@ export const experienceData: Company[] = [
     roles: [
       {
         title: 'Front End Developer',
-        startDate: 'October 2020',
-        endDate: 'December 2021',
-      },
-    ],
-  },
-];
-
-export const educationData: Institution[] = [
-  {
-    name: 'University of Texas at Austin',
-    education: [
-      {
-        degree: 'Bachelor of Science and Arts in Biology, Pre-health',
-        yearGraduated: '2020',
-        location: 'Austin, TX',
-      },
-      {
-        degree: 'Full-stack web development certificate',
-      },
-    ],
-  },
-  {
-    name: 'University of Oklahoma',
-    education: [
-      {
-        degree: 'Bachelor of Business Administration in Marketing',
-        yearGraduated: '2016',
-        location: 'Norman, OK',
+        startDate: 'Oct 2020',
+        endDate: 'Dec 2021',
+        tagline: 'TKTK',
       },
     ],
   },
