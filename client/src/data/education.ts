@@ -13,7 +13,7 @@ export const educationData: Institution[] = [
     ],
   },
   {
-    name: 'University of Oklahoma',
+    name: 'University of Oklahoma in Norman',
     yearGraduated: '2016',
     education: [
       {

@@ -14,13 +14,12 @@ const { institutions = [] } = Astro.props;
   <h2 slot='title'>Education</h2>
   <div slot='body'>
     <div>
-      <h3>Education</h3>
       <div class='items'>
         {
           institutions.map((institution) => (
             <div>
               <span class='header'>
-                <h4 class='title'>{institution.name}</h4>
+                <h3 class='title'>{institution.name}</h3>
                 {institution.yearGraduated && (
                   <span class='dates'>{institution.yearGraduated}</span>
                 )}
