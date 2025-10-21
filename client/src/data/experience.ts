@@ -6,28 +6,28 @@ export const experienceData: Company[] = [
     roles: [
       {
         title: 'Product Manager',
-        startDate: 'Feb 2025',
+        startDate: 'February 2025',
         current: true,
         tagline: 'Product lead for utilities and sustainability domains',
       },
       {
         title: 'Senior Software Engineer',
         startDate: 'July 2024',
-        endDate: 'Jan 2025',
+        endDate: 'January 2025',
         current: false,
         tagline: 'Hybrid role in product management',
       },
       {
         title: 'Software Engineer II',
-        startDate: 'Apr 2023',
-        endDate: 'Jun 2024',
+        startDate: 'April 2023',
+        endDate: 'June 2024',
         current: false,
         tagline: 'Hybrid role in product management',
       },
       {
         title: 'Software Engineer I',
-        startDate: 'Jan 2022',
-        endDate: 'Mar 2023',
+        startDate: 'January 2022',
+        endDate: 'March 2023',
         current: false,
         tagline: 'TKTK',
       },
@@ -38,8 +38,8 @@ export const experienceData: Company[] = [
     roles: [
       {
         title: 'Front End Developer',
-        startDate: 'Oct 2020',
-        endDate: 'Dec 2021',
+        startDate: 'October 2020',
+        endDate: 'December 2021',
         tagline: 'TKTK',
       },
     ],

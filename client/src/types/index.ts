@@ -18,6 +18,7 @@ export interface Company {
 
 export interface Institution {
   name: string;
-  yearGraduated?: string;
+  yearGraduated: string;
+  location: string;
   education: Education[];
 }

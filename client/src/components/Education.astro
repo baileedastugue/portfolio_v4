@@ -1,7 +1,7 @@
 ---
 import Section from '../layouts/Section.astro';
 import type { Institution } from '../types';
-import '../styles/experience.css';
+import '../styles/history.css';
 
 interface Props {
   institutions?: Institution[];
@@ -13,26 +13,31 @@ const { institutions = [] } = Astro.props;
 <Section id='education'>
   <h2 slot='title'>Education</h2>
   <div slot='body'>
-    <div>
-      <div class='items'>
-        {
-          institutions.map((institution) => (
-            <div>
-              <span class='header'>
-                <h3 class='title'>{institution.name}</h3>
-                {institution.yearGraduated && (
-                  <span class='dates'>{institution.yearGraduated}</span>
-                )}
+    <div class='section flex-column'>
+      {
+        institutions.map((institution) => (
+          <div class='section-event flex-column education-institution'>
+            <span class='section-header'>
+              <h3 class='section-title'>{institution.name}</h3>
+              <span class='section-dates education-dates'>
+                {institution.yearGraduated} // {institution.location}
               </span>
-              {institution.education.map((edu) => (
-                <>
-                  <p>{edu.degree}</p>
-                </>
-              ))}
-            </div>
-          ))
-        }
-      </div>
+            </span>
+            {institution.education.map((edu) => (
+              <p class='education-degree'>{edu.degree}</p>
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </Section>
+
+<style>
+  .education-institution {
+    gap: 0.5rem;
+  }
+  .education-degree {
+    font-weight: 600;
+  }
+</style>

@@ -1,7 +1,7 @@
 ---
 import Section from '../layouts/Section.astro';
 import type { Company } from '../types';
-import '../styles/experience.css';
+import '../styles/history.css';
 
 interface Props {
   companies: Company[];
@@ -12,23 +12,25 @@ const { companies = [] } = Astro.props;
 
 <Section id='experience'>
   <h2 slot='title'>Experience</h2>
-  <div slot='body' class='experience'>
-    <div class='section'>
+  <div slot='body' class='experience flex-column'>
+    <div class='section flex-column'>
       {
         companies.map((company) => (
-          <div>
+          <div class='experience-company section-event flex-column'>
             <h3>{company.name}</h3>
-            <div class='items'>
+            <div class='section-items flex-column'>
               {company.roles.map((role) => (
-                <div>
-                  <span class='header'>
-                    <h4 class='title'>{role.title}</h4>
-                    <span class='dates'>
+                <div class='experience-role flex-column'>
+                  <span class='section-header'>
+                    <h4 class='section-title'>{role.title}</h4>
+                    <span class='experience-dates section-dates'>
                       {role.startDate} -{' '}
                       {role.current ? 'Present' : role.endDate}
                     </span>
                   </span>
-                  {role.tagline && <p class='tagline'>{role.tagline}</p>}
+                  {role.tagline && (
+                    <p class='experience-tagline'>{role.tagline}</p>
+                  )}
                   {role.description && <p>{role.description}</p>}
                 </div>
               ))}
@@ -39,3 +41,30 @@ const { companies = [] } = Astro.props;
     </div>
   </div>
 </Section>
+
+<style>
+  .experience {
+    gap: 1rem;
+  }
+  .experience-dates {
+    margin: 0 0.5rem;
+  }
+  .experience-role {
+    gap: 0.35rem;
+  }
+
+  .experience-company {
+    gap: 0.5rem;
+  }
+  .experience-tagline {
+    margin: 0 0.5rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    .experience-dates {
+      text-align: right;
+      word-break: nowrap;
+    }
+  }
+</style>
