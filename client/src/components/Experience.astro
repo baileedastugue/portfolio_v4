@@ -29,7 +29,7 @@ const { companies = [] } = Astro.props;
                     </span>
                   </span>
                   {role.tagline && (
-                    <p class='experience-tagline'>{role.tagline}</p>
+                    <p class='experience-tagline' set:html={role.tagline} />
                   )}
                   {role.description && <p>{role.description}</p>}
                 </div>
@@ -61,6 +61,27 @@ const { companies = [] } = Astro.props;
     font-weight: 600;
   }
 
+  :global(.experience-tagline span) {
+    font-weight: 400;
+  }
+
+  :global(.experience-tagline .tagline-link) {
+    align-items: center;
+    color: #2d31fa;
+    display: inline-flex;
+    font-weight: normal;
+    gap: 0.25rem;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+  }
+
+  :global(.experience-tagline .tagline-link:hover) {
+    text-decoration: underline;
+  }
+
+  :global(.experience-tagline .external-link-icon) {
+    flex-shrink: 0;
+  }
   @media (min-width: 768px) {
     .experience-dates {
       text-align: right;

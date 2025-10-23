@@ -1,5 +1,7 @@
 ---
 import Section from '../layouts/Section.astro';
+import ExternalLinkIcon from './ExternalLinkIcon.astro';
+
 interface Project {
   name: string;
   link: string;
@@ -18,15 +20,37 @@ const { projects } = Astro.props;
   <div slot='body'>
     {
       projects.map((project) => (
-        <>
+        <div class='project flex-column'>
           <h3>
-            <a href={project.link} target='_blank' rel='noopener noreferrer'>
+            <a
+              href={project.link}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='project-link'
+            >
               {project.name}
+              <ExternalLinkIcon size={18} />
             </a>
           </h3>
           <p>{project.description}</p>
-        </>
+        </div>
       ))
     }
   </div>
 </Section>
+
+<style>
+  .project {
+    gap: 0.5rem;
+  }
+
+  .project-link {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.25rem;
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
+  }
+</style>
