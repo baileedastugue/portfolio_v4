@@ -9,7 +9,7 @@ export const experienceData: Company[] = [
         startDate: 'February 2025',
         current: true,
         tagline:
-          'Currently leading product strategy and development for utilities and sustainability domains',
+          'Currently leading product strategy and development for utilities and sustainability domains.',
       },
       {
         title: 'Senior Software Engineer',
@@ -32,7 +32,7 @@ export const experienceData: Company[] = [
         startDate: 'January 2022',
         endDate: 'March 2023',
         current: false,
-        tagline: 'Built enterprise-level web applications for internal use',
+        tagline: 'Built enterprise-level web applications for internal use.',
       },
     ],
   },
@@ -44,7 +44,7 @@ export const experienceData: Company[] = [
         startDate: 'October 2020',
         endDate: 'December 2021',
         tagline:
-          'Created personalized experiences for 800,000+ online transactions',
+          'Created personalized experiences for 800,000+ online transactions.',
       },
     ],
   },
