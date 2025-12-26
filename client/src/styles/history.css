@@ -28,7 +28,7 @@
 .section-event::before {
   content: '';
   position: absolute;
-  background-color: #5d8bf4;
+  background-color: var(--color-primary);
   width: 4px;
   height: 100%;
   left: 0;
