@@ -2,6 +2,7 @@
 import Section from '../layouts/Section.astro';
 import BlogPostSummary from './BlogPostSummary.astro';
 import '../styles/history.css';
+import Button from './Button.astro';
 
 const allPosts = Object.values(
   import.meta.glob('../pages/posts/*.md', { eager: true })
@@ -33,5 +34,27 @@ const recentPosts = allPosts
         );
       })
     }
+    <div class='button-container flex-column'>
+      <Button
+        id='viewAllPostsButton'
+        classes='button-medium button-primary button-filled'
+        >View all posts</Button
+      >
+    </div>
   </div>
 </Section>
+
+<style>
+  .button-container {
+    align-items: center;
+    width: 100%;
+  }
+</style>
+
+<script>
+  document
+    ?.getElementById('viewAllPostsButton')
+    ?.addEventListener('click', () => {
+      window.location.href = '/posts';
+    });
+</script>
