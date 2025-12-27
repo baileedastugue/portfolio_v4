@@ -13,7 +13,22 @@ import { projectsData } from '../data/projects';
 
 <Layout>
   <Intro />
-  <Nav />
+  <Nav>
+    <ul>
+      <li>
+        <a href='#experience'>Experience</a>
+      </li>
+      <li>
+        <a href='#education'>Education</a>
+      </li>
+      <li>
+        <a href='#projects'>Projects</a>
+      </li>
+      <li>
+        <a href='#posts'>Posts</a>
+      </li>
+    </ul>
+  </Nav>
   <Experience companies={experienceData} />
   <Education institutions={educationData} />
   <Projects projects={projectsData} />
