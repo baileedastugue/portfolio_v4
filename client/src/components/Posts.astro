@@ -19,7 +19,7 @@ const recentPosts = allPosts
 
 <Section id='posts'>
   <h2 slot='title'>Posts</h2>
-  <div slot='body' class='section flex-column'>
+  <div slot='body' class='section flex-column gap-1-5'>
     {
       recentPosts.map((post: any) => {
         const { title, pubDate, description, image } = post.frontmatter;

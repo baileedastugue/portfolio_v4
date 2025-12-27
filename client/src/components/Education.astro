@@ -13,7 +13,7 @@ const { institutions = [] } = Astro.props;
 <Section id='education'>
   <h2 slot='title'>Education</h2>
   <div slot='body'>
-    <div class='section flex-column'>
+    <div class='section flex-column gap-1-5'>
       {
         institutions.map((institution) => (
           <div class='section-event flex-column education-institution'>

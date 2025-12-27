@@ -1,19 +1,6 @@
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.section {
-  gap: 1.5rem;
-}
-
 .section-header {
   display: flex;
   flex-direction: column;
-}
-
-.section-items {
-  gap: 1rem;
 }
 
 .section-title {

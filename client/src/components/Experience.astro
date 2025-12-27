@@ -12,13 +12,13 @@ const { companies = [] } = Astro.props;
 
 <Section id='experience'>
   <h2 slot='title'>Experience</h2>
-  <div slot='body' class='experience flex-column'>
-    <div class='section flex-column'>
+  <div slot='body' class='experience flex-column gap-1'>
+    <div class='section flex-column gap-1-5'>
       {
         companies.map((company) => (
           <div class='experience-company section-event flex-column'>
             <h3>{company.name}</h3>
-            <div class='section-items flex-column'>
+            <div class='section-items flex-column gap-1'>
               {company.roles.map((role) => (
                 <div class='experience-role flex-column'>
                   <span class='section-header'>
@@ -43,9 +43,6 @@ const { companies = [] } = Astro.props;
 </Section>
 
 <style>
-  .experience {
-    gap: 1rem;
-  }
   .experience-dates {
     margin: 0 0.75rem;
   }
