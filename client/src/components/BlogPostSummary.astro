@@ -1,0 +1,108 @@
+---
+import ArrowRightIcon from './ArrowRightIcon.astro';
+import '../styles/history.css';
+
+interface Image {
+  alt: string;
+  url: string;
+}
+
+interface Props {
+  description?: string;
+  image?: Image;
+  pubDate: string | Date;
+  title: string;
+  url: string;
+}
+
+const { title, pubDate, description, url, image } = Astro.props;
+
+function formatDate(dateString: string | Date): string {
+  let date: Date;
+  if (typeof dateString === 'string') {
+    const parts = dateString.split('-');
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    date = new Date(year, month, day);
+  } else {
+    date = dateString;
+  }
+  const month = date.toLocaleDateString('en-US', {
+    month: 'long',
+  });
+  const day = date.getDate().toString();
+  const year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
+---
+
+<a href={url} class='post-summary section flex-column'>
+  <div class='section-event'>
+    {image && <img src={image.url} alt={image.alt} class='right' />}
+    <p class='header'>
+      <div class='title-wrapper'>
+        <h3>{title}</h3>
+        <div class='arrow-wrapper'>
+          <ArrowRightIcon size={16} />
+        </div>
+      </div>
+      <p class='date'>{formatDate(pubDate)}</p>
+      {description && <p>{description}</p>}
+    </p>
+  </div>
+</a>
+
+<style>
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:hover .section-event .title-wrapper {
+    color: var(--color-tertiary);
+  }
+
+  img {
+    border-radius: 4px;
+    float: right;
+    height: 96px;
+    margin: 0 0 0.25rem 1rem;
+    object-fit: cover;
+    width: 96px;
+  }
+
+  p {
+    font-weight: 400;
+  }
+
+  .section-event {
+    box-sizing: border-box;
+    color: var(--text-primary);
+    float: left;
+  }
+
+  .date {
+    margin: 0rem 0 0.75rem;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .title-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .arrow-wrapper {
+    flex-shrink: 0;
+    margin: 6px 0 0;
+  }
+</style>
