@@ -1,0 +1,37 @@
+---
+import Section from '../layouts/Section.astro';
+import BlogPostSummary from './BlogPostSummary.astro';
+import '../styles/history.css';
+
+const allPosts = Object.values(
+  import.meta.glob('../pages/posts/*.md', { eager: true })
+);
+
+const recentPosts = allPosts
+  .map((post: any) => ({
+    ...post,
+    date: new Date(post.frontmatter.pubDate),
+  }))
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, 3);
+---
+
+<Section id='posts'>
+  <h2 slot='title'>Posts</h2>
+  <div slot='body' class='section flex-column'>
+    {
+      recentPosts.map((post: any) => {
+        const { title, pubDate, description, image } = post.frontmatter;
+        return (
+          <BlogPostSummary
+            title={title}
+            pubDate={pubDate}
+            description={description}
+            url={post.url}
+            image={image}
+          />
+        );
+      })
+    }
+  </div>
+</Section>
