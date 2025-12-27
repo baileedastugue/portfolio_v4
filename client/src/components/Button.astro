@@ -1,0 +1,50 @@
+---
+interface Props {
+  classes?: string;
+  id?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const { type = 'button', id, classes = '', ...rest } = Astro.props;
+---
+
+<button type={type} class={`button ${classes}`} id={id} {...rest}>
+  <slot />
+</button>
+
+<style>
+  .button {
+    align-items: center;
+    border: 1px solid;
+    border-radius: 999px;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  .button-small {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+  }
+
+  .button-medium {
+    font-size: 1rem;
+    padding: 2px 12px;
+  }
+
+  .button-primary.button-filled {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--text-inverse);
+  }
+
+  .button-primary.button-filled:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    box-shadow: 0px 1px 4px 0px rgba(12, 12, 13, 0.05);
+  }
+
+  .button-primary.button-filled:active {
+    background-color: var(--text-primary);
+    color: var(--text-inverse);
+  }
+</style>
