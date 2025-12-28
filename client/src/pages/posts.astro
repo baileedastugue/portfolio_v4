@@ -1,0 +1,50 @@
+---
+import Section from '../layouts/Section.astro';
+import BlogPostSummary from '../components/BlogPostSummary.astro';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import ArrowLeftIcon from '../components/ArrowLeftIcon.astro';
+import '../styles/history.css';
+
+const allPosts = Object.values(
+  import.meta.glob('./posts/*.md', { eager: true })
+);
+
+const sortedPosts = allPosts
+  .map((post: any) => ({
+    ...post,
+    date: new Date(post.frontmatter.pubDate),
+  }))
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+const pageTitle = 'All posts';
+---
+
+<Layout gap={1}>
+  <Nav variant='single'>
+    <a href='/' class='flex-row gap-1'>
+      <ArrowLeftIcon size={16} />
+      Go back
+    </a>
+  </Nav>
+  <Section id={pageTitle}>
+    <h1 slot='title'>{pageTitle}</h1>
+    <div slot='body' class='section flex-column gap-1-5'>
+      <p>{allPosts.length} {allPosts.length > 1 ? 'posts' : 'post'}</p>
+      {
+        sortedPosts.map((post: any) => {
+          const { title, pubDate, description, image } = post.frontmatter;
+          return (
+            <BlogPostSummary
+              title={title}
+              pubDate={pubDate}
+              description={description}
+              url={post.url}
+              image={image}
+            />
+          );
+        })
+      }
+    </div>
+  </Section>
+</Layout>
