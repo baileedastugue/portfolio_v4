@@ -30,20 +30,28 @@ const pageTitle = 'All posts';
   <Section id={pageTitle}>
     <h1 slot='title'>{pageTitle}</h1>
     <div slot='body' class='section flex-column gap-1-5'>
-      <p>{allPosts.length} {allPosts.length > 1 ? 'posts' : 'post'}</p>
       {
-        sortedPosts.map((post: any) => {
-          const { title, pubDate, description, image } = post.frontmatter;
-          return (
-            <BlogPostSummary
-              title={title}
-              pubDate={pubDate}
-              description={description}
-              url={post.url}
-              image={image}
-            />
-          );
-        })
+        sortedPosts.length === 0 ? (
+          <p>No posts available yet. Check back soon!</p>
+        ) : (
+          <>
+            <p>
+              {allPosts.length} {allPosts.length > 1 ? 'posts' : 'post'}
+            </p>
+            {sortedPosts.map((post: any) => {
+              const { title, pubDate, description, image } = post.frontmatter;
+              return (
+                <BlogPostSummary
+                  title={title}
+                  pubDate={pubDate}
+                  description={description}
+                  url={post.url}
+                  image={image}
+                />
+              );
+            })}
+          </>
+        )
       }
     </div>
   </Section>

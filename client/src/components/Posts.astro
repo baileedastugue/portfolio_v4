@@ -21,26 +21,33 @@ const recentPosts = allPosts
   <h2 slot='title'>Posts</h2>
   <div slot='body' class='section flex-column gap-1-5'>
     {
-      recentPosts.map((post: any) => {
-        const { title, pubDate, description, image } = post.frontmatter;
-        return (
-          <BlogPostSummary
-            title={title}
-            pubDate={pubDate}
-            description={description}
-            url={post.url}
-            image={image}
-          />
-        );
-      })
+      recentPosts.length === 0 ? (
+        <p>No posts available yet. Check back soon!</p>
+      ) : (
+        <>
+          {recentPosts.map((post: any) => {
+            const { title, pubDate, description, image } = post.frontmatter;
+            return (
+              <BlogPostSummary
+                title={title}
+                pubDate={pubDate}
+                description={description}
+                url={post.url}
+                image={image}
+              />
+            );
+          })}
+          <div class='button-container flex-column'>
+            <Button
+              id='viewAllPostsButton'
+              classes='button-medium button-primary button-filled'
+            >
+              View all posts
+            </Button>
+          </div>
+        </>
+      )
     }
-    <div class='button-container flex-column'>
-      <Button
-        id='viewAllPostsButton'
-        classes='button-medium button-primary button-filled'
-        >View all posts</Button
-      >
-    </div>
   </div>
 </Section>
 
