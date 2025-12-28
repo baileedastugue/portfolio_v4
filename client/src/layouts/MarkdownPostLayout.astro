@@ -1,0 +1,25 @@
+---
+import Section from './Section.astro';
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import ArrowLeftIcon from '../components/ArrowLeftIcon.astro';
+import { formatDate } from '../utils/date';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout gap={1}>
+  <Nav variant='single'>
+    <a href='/posts' class='flex-row gap-1'>
+      <ArrowLeftIcon size={16} />
+      All posts
+    </a>
+  </Nav>
+  <Section id={frontmatter.title}>
+    <h1 slot='title'>{frontmatter.title}</h1>
+    <div slot='body' class='section flex-column gap-1-5'>
+      <p>Published on {formatDate(frontmatter.pubDate)}</p>
+      <slot />
+    </div>
+  </Section>
+</Layout>
