@@ -79,7 +79,8 @@ button {
     text-decoration 0.2s ease;
 }
 
-a:hover {
+a:hover,
+button:hover {
   text-decoration: underline;
 }
 
