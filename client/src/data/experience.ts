@@ -5,7 +5,7 @@ export const experienceData: Company[] = [
     name: 'H-E-B',
     roles: [
       {
-        title: 'Product Manager',
+        title: 'Senior Technical Product Manager',
         startDate: 'February 2025',
         current: true,
         tagline:

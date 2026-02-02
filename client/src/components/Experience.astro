@@ -28,9 +28,9 @@ const { companies = [] } = Astro.props;
                       {role.current ? 'Present' : role.endDate}
                     </span>
                   </span>
-                  {role.tagline && (
+                  {/* {role.tagline && (
                     <p class='experience-tagline' set:html={role.tagline} />
-                  )}
+                  )} */}
                   {role.description && <p>{role.description}</p>}
                 </div>
               ))}
